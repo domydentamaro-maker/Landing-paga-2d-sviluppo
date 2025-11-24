@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Stats: React.FC = () => {
   const stats = [
-    { value: "12+", label: "Anni di Esperienza" },
+    { value: "15", label: "Anni di Esperienza" },
     { value: "50+", label: "Progetti Completati" },
     { value: "100%", label: "Sostenibilità" },
     { value: "24/7", label: "Supporto Clienti" }

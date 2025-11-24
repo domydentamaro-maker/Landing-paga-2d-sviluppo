@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
@@ -6,7 +7,7 @@ export const FloatingContact: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
       {/* Chat Bubble Notification */}
       <div className="bg-white p-3 rounded-lg shadow-lg mb-2 animate-fade-in-up max-w-[200px] border border-gray-100 hidden md:block">
-        <p className="text-sm text-slate-700">Ciao! 👋 <br/>Posso aiutarti a trovare casa?</p>
+        <p className="text-sm text-slate-700">Ciao! 👋 <br/>Come posso aiutarti?</p>
       </div>
 
       <a 

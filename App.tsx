@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Values } from './components/Values';
@@ -7,7 +7,6 @@ import { Founder } from './components/Founder';
 import { ProjectGrid } from './components/ProjectGrid';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { Preloader } from './components/Preloader';
 import { Stats } from './components/Stats';
 import { FloatingContact } from './components/FloatingContact';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -17,9 +16,10 @@ import { FiloMethod } from './components/FiloMethod';
 import { LeadMagnet } from './components/LeadMagnet';
 import { LoginModal } from './components/LoginModal';
 import { Dashboard } from './components/Dashboard';
+import { ProcessTimeline } from './components/ProcessTimeline';
+import { LocalAreas } from './components/LocalAreas';
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -77,24 +77,12 @@ const App: React.FC = () => {
 
   const LOGO_URL = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
 
-  // VIDEO: City Timelapse (Attesa link utente)
-  // Fallback stabile se il video scade
-  const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3253016/3253016-hd_1920_1080_25fps.mp4"; 
+  // VIDEO: City Timelapse
+  const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3121459/3121459-hd_1920_1080_25fps.mp4"; 
   const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); 
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
-      {loading ? (
-        <Preloader logoUrl={LOGO_URL} />
-      ) : (
         <div className="animate-fade-in relative">
           <ProgressBar />
           <Navbar logoUrl={LOGO_URL} onOpenLogin={() => setIsLoginOpen(true)} />
@@ -102,9 +90,11 @@ const App: React.FC = () => {
             <Hero videoUrl={HERO_VIDEO_URL} fallbackImage={HERO_IMAGE_URL} />
             <Values />
             <FiloMethod />
+            <ProcessTimeline />
             <LeadMagnet />
             <Founder />
             <Stats />
+            <LocalAreas />
             <ProjectGrid />
             <Contact />
           </main>
@@ -125,7 +115,6 @@ const App: React.FC = () => {
             user="Investitore Partner"
           />
         </div>
-      )}
     </div>
   );
 };

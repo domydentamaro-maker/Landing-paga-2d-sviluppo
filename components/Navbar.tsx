@@ -20,74 +20,66 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Mission', href: '#mission' },
-    { name: 'Metodo F.I.L.O.', href: '#filo' },
-    { name: 'Aree', href: '#progetti' },
-    { name: 'Contatti', href: '#contact' },
+    { label: 'Chi Siamo', href: '#mission' },
+    { label: 'Metodo F.I.L.O', href: '#filo' },
+    { label: 'Progetti', href: '#progetti' },
+    { label: 'Contatti', href: '#contact' }
   ];
 
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
     }
   };
 
   return (
     <header 
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-3' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-6'
       }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-2 group">
-          <div className={`transition-all duration-300 ${isScrolled ? 'w-12' : 'w-16 md:w-24'}`}>
-            <img 
-              src={logoUrl} 
-              alt="2D Logo" 
-              className="w-full h-auto transition-transform duration-500 ease-out transform group-hover:scale-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]" 
-            />
-          </div>
-        </a>
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        
+        {/* Logo rimosso come richiesto */}
+        <div className="w-24"></div>
 
-        <nav className="hidden md:flex gap-8 items-center">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => handleNavClick(link.href)}
-              className={`text-sm font-semibold uppercase tracking-wider transition-colors hover:text-cyan-500 bg-transparent border-none cursor-pointer ${
-                isScrolled ? 'text-slate-600' : 'text-white drop-shadow-sm'
+            <a 
+              key={link.label}
+              href={link.href}
+              onClick={(e) => handleScrollTo(e, link.href)}
+              className={`font-medium text-sm tracking-wide transition-colors relative group ${
+                isScrolled ? 'text-slate-700 hover:text-[#003366]' : 'text-white/90 hover:text-white'
               }`}
             >
-              {link.name}
-            </button>
+              {link.label}
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                isScrolled ? 'bg-[#003366]' : 'bg-white'
+              }`}></span>
+            </a>
           ))}
-          <button
-            onClick={() => handleNavClick('#filo')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 ${
-              isScrolled 
-                ? 'bg-cyan-600 text-white hover:bg-cyan-700' 
-                : 'bg-white text-slate-900 hover:bg-gray-100'
-            }`}
-          >
-            Scopri il Metodo
-          </button>
           
-          {/* Login Trigger */}
           <button 
             onClick={onOpenLogin}
-            className={`p-2 rounded-full transition-all ${
-               isScrolled ? 'text-slate-400 hover:text-[#003366] hover:bg-slate-100' : 'text-white/70 hover:text-white hover:bg-white/10'
+            className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
+              isScrolled 
+                ? 'border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white' 
+                : 'border-white/30 text-white hover:bg-white/20'
             }`}
-            title="Area Riservata"
           >
-            <Lock className="w-5 h-5" />
+            <Lock className="w-4 h-4" />
+            <span className="text-xs font-bold uppercase tracking-wider">Area Riservata</span>
           </button>
         </nav>
 
+        {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 focus:outline-none"
+          className="md:hidden text-slate-800"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -98,32 +90,31 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
         </button>
       </div>
 
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="flex flex-col py-4 px-6 gap-4">
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-4 md:hidden animate-fade-in border-t border-gray-100">
           {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => handleNavClick(link.href)}
-              className="text-left text-lg font-medium text-slate-700 border-b border-gray-100 pb-2 hover:text-cyan-600 bg-transparent"
+            <a 
+              key={link.label}
+              href={link.href}
+              onClick={(e) => handleScrollTo(e, link.href)}
+              className="text-xl font-serif text-[#003366] py-2 border-b border-gray-100"
             >
-              {link.name}
-            </button>
+              {link.label}
+            </a>
           ))}
           <button 
-             onClick={() => {
-               setIsMobileMenuOpen(false);
-               onOpenLogin();
-             }}
-             className="text-left text-lg font-medium text-[#003366] flex items-center gap-2 pt-2"
+            onClick={() => {
+              onOpenLogin();
+              setIsMobileMenuOpen(false);
+            }}
+            className="flex items-center justify-center gap-2 mt-4 px-6 py-3 bg-[#003366] text-white rounded-xl font-bold"
           >
-            <Lock className="w-4 h-4" /> Area Riservata
+            <Lock className="w-4 h-4" />
+            ACCEDI AREA RISERVATA
           </button>
         </div>
-      </div>
+      )}
     </header>
   );
 };
