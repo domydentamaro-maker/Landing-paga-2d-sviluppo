@@ -26,7 +26,7 @@ const CookieBanner = lazy(() => import('./components/CookieBanner').then(module 
 const LoginModal = lazy(() => import('./components/LoginModal').then(module => ({ default: module.LoginModal })));
 const Dashboard = lazy(() => import('./components/Dashboard').then(module => ({ default: module.Dashboard })));
 
-// --- Static Definitions (Moved outside component for performance) ---
+// --- Static Definitions ---
 const svgString = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220">
   <g stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -50,7 +50,8 @@ const svgString = `
 
 const LOGO_URL = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
 const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3121459/3121459-hd_1920_1080_25fps.mp4"; 
-const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+// Optimized WebP image for Hero Fallback (Matches index.html preload)
+const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=75&fm=webp";
 
 const App: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -67,7 +68,7 @@ const App: React.FC = () => {
             <TrackRecord />
             
             {/* Below the Fold Components (Lazy Loaded) */}
-            <Suspense fallback={<div className="py-24 text-center text-gray-300">Caricamento contenuti...</div>}>
+            <Suspense fallback={<div className="py-24 text-center text-gray-300"></div>}>
               <Values />
               <FiloMethod />
               <ProcessTimeline />

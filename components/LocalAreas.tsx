@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, ArrowRight, Map } from 'lucide-react';
+import { MapPin, Map } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const LocalAreas: React.FC = () => {
@@ -9,37 +9,37 @@ export const LocalAreas: React.FC = () => {
       name: "Ceglie del Campo",
       focus: "Rigenerazione Urbana",
       desc: "Area strategica per il residenziale moderno. Alta richiesta di nuove costruzioni in classe A.",
-      image: "https://images.unsplash.com/photo-1599380608226-c5678eb171f1?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1599380608226-c5678eb171f1?auto=format&fit=crop&q=75&w=600&fm=webp"
     },
     {
       name: "Carbonara",
       focus: "Espansione & Servizi",
       desc: "Quartiere in forte crescita demografica. Ottime opportunità per complessi misti.",
-      image: "https://images.unsplash.com/photo-1549643276-fbc2bd874326?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1549643276-fbc2bd874326?auto=format&fit=crop&q=75&w=600&fm=webp"
     },
     {
       name: "Poggiofranco",
       focus: "Prestigio & Verde",
       desc: "Il cuore pulsante del business barese. Ricerchiamo lotti per uffici direzionali.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=75&w=600&fm=webp"
     },
     {
       name: "Loseto",
       focus: "Nuove Urbanizzazioni",
       desc: "Terreni con ampie metrature ideali per edilizia convenzionata.",
-      image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&q=75&w=600&fm=webp"
     },
     {
       name: "Carrassi / San Pasquale",
       focus: "Recupero Edilizio",
       desc: "Valorizzazione di vuoti urbani e sostituzione edilizia in zone dense.",
-      image: "https://images.unsplash.com/photo-1444723121867-2291d1d94065?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1444723121867-2291d1d94065?auto=format&fit=crop&q=75&w=600&fm=webp"
     },
     {
       name: "Japigia / S. Giorgio",
       focus: "Vista Mare",
       desc: "Sviluppo residenziale turistico e residenziale di pregio.",
-      image: "https://images.unsplash.com/photo-1516937941348-c09645f31e3d?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1516937941348-c09645f31e3d?auto=format&fit=crop&q=75&w=600&fm=webp"
     }
   ];
 
@@ -79,6 +79,9 @@ export const LocalAreas: React.FC = () => {
                   <img 
                     src={area.image} 
                     alt={`Sviluppo immobiliare ${area.name}`} 
+                    loading="lazy"
+                    width="600"
+                    height="400"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#003366]/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>

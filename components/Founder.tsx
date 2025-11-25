@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
 import { Quote } from 'lucide-react';
@@ -15,10 +16,13 @@ export const Founder: React.FC = () => {
             {/* Founder Image */}
             <div className="w-full md:w-5/12 relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                {/* Placeholder for real photo */}
+                {/* Optimized WebP Image */}
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=75&fm=webp" 
                   alt="Domenico Dentamaro" 
+                  loading="lazy"
+                  width="600"
+                  height="750"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#003366]/80 to-transparent"></div>

@@ -45,8 +45,11 @@ export const BeforeAfter: React.FC = () => {
           >
             {/* AFTER Image (Background) */}
             <img 
-              src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+              src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=75&fm=webp" 
               alt="Project Render" 
+              loading="lazy"
+              width="1200"
+              height="675"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute top-6 right-6 bg-[#003366]/90 text-white px-4 py-2 rounded-lg font-bold backdrop-blur-md">
@@ -59,10 +62,13 @@ export const BeforeAfter: React.FC = () => {
               style={{ width: `${sliderPosition}%` }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=75&fm=webp" 
                 alt="Raw Land" 
+                loading="lazy"
+                width="1200"
+                height="675"
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ width: '100vw', maxWidth: '1152px' }} // Approx max-w-5xl width to keep image static while container shrinks
+                style={{ width: '100vw', maxWidth: '1152px' }} 
               />
               <div className="absolute top-6 left-6 bg-slate-900/90 text-white px-4 py-2 rounded-lg font-bold backdrop-blur-md">
                 PRIMA (Stato di Fatto)

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
@@ -9,7 +10,8 @@ export const ProjectGrid: React.FC = () => {
       title: 'Materia Prima',
       subtitle: 'Analisi & Suoli',
       description: 'La selezione del suolo è il primo passo dell\'investimento. Analizziamo le potenzialità edificatorie e il contesto urbanistico per garantire il massimo valore.',
-      imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop',
+      // Optimized WebP
+      imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=75&w=800&auto=format&fit=crop&fm=webp',
       linkText: 'Valuta Terreni',
       color: 'from-stone-800/80 to-stone-900/90'
     },
@@ -18,7 +20,8 @@ export const ProjectGrid: React.FC = () => {
       title: 'Visioni',
       subtitle: 'Sviluppo & Concept',
       description: 'Trasformiamo numeri e planimetrie in progetti vivi. Dallo studio di fattibilità al concept architettonico, diamo forma al futuro dell\'area.',
-      imageUrl: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=800',
+      // Optimized WebP
+      imageUrl: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=75&w=800&auto=format&fit=crop&fm=webp',
       linkText: 'Scopri i Concept',
       color: 'from-[#003366]/80 to-[#001a33]/90'
     },
@@ -27,7 +30,8 @@ export const ProjectGrid: React.FC = () => {
       title: 'Blog & News',
       subtitle: 'Mercato & Trend',
       description: 'Analisi del mercato immobiliare barese, normative urbanistiche e opportunità di investimento. Il punto di vista esperto sul settore.',
-      imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015', // changed to finance/chart image
+      // Optimized WebP
+      imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=800&auto=format&fit=crop&fm=webp',
       linkText: 'Leggi gli Approfondimenti',
       color: 'from-cyan-900/80 to-slate-900/90'
     }
@@ -56,6 +60,9 @@ export const ProjectGrid: React.FC = () => {
                   <img 
                     src={item.imageUrl} 
                     alt={item.title} 
+                    loading="lazy"
+                    width="800"
+                    height="500"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Overlay */}
