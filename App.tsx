@@ -1,26 +1,29 @@
-
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Values } from './components/Values';
-import { Founder } from './components/Founder';
-import { ProjectGrid } from './components/ProjectGrid';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
-import { Stats } from './components/Stats';
-import { FloatingContact } from './components/FloatingContact';
-import { ScrollToTop } from './components/ScrollToTop';
-import { CookieBanner } from './components/CookieBanner';
-import { ProgressBar } from './components/ProgressBar';
-import { FiloMethod } from './components/FiloMethod';
-import { LeadMagnet } from './components/LeadMagnet';
-import { LoginModal } from './components/LoginModal';
-import { Dashboard } from './components/Dashboard';
-import { ProcessTimeline } from './components/ProcessTimeline';
-import { ComparisonTable } from './components/ComparisonTable';
-import { Glossary } from './components/Glossary';
-import { TechnicalPartners } from './components/TechnicalPartners';
 import { TrackRecord } from './components/TrackRecord';
+import { ProgressBar } from './components/ProgressBar';
+
+// Lazy Load Below-the-fold Content to improve FCP
+const Values = lazy(() => import('./components/Values').then(module => ({ default: module.Values })));
+const FiloMethod = lazy(() => import('./components/FiloMethod').then(module => ({ default: module.FiloMethod })));
+const ProcessTimeline = lazy(() => import('./components/ProcessTimeline').then(module => ({ default: module.ProcessTimeline })));
+const LeadMagnet = lazy(() => import('./components/LeadMagnet').then(module => ({ default: module.LeadMagnet })));
+const ComparisonTable = lazy(() => import('./components/ComparisonTable').then(module => ({ default: module.ComparisonTable })));
+const Founder = lazy(() => import('./components/Founder').then(module => ({ default: module.Founder })));
+const Glossary = lazy(() => import('./components/Glossary').then(module => ({ default: module.Glossary })));
+const Stats = lazy(() => import('./components/Stats').then(module => ({ default: module.Stats })));
+const ProjectGrid = lazy(() => import('./components/ProjectGrid').then(module => ({ default: module.ProjectGrid })));
+const TechnicalPartners = lazy(() => import('./components/TechnicalPartners').then(module => ({ default: module.TechnicalPartners })));
+const Contact = lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
+const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
+
+// Lazy Load Interactive/Fixed elements
+const FloatingContact = lazy(() => import('./components/FloatingContact').then(module => ({ default: module.FloatingContact })));
+const ScrollToTop = lazy(() => import('./components/ScrollToTop').then(module => ({ default: module.ScrollToTop })));
+const CookieBanner = lazy(() => import('./components/CookieBanner').then(module => ({ default: module.CookieBanner })));
+const LoginModal = lazy(() => import('./components/LoginModal').then(module => ({ default: module.LoginModal })));
+const Dashboard = lazy(() => import('./components/Dashboard').then(module => ({ default: module.Dashboard })));
 
 const App: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -63,38 +66,46 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
         <div className="animate-fade-in relative">
           <ProgressBar />
+          {/* Critical Path Components (Loaded Immediately) */}
           <Navbar logoUrl={LOGO_URL} onOpenLogin={() => setIsLoginOpen(true)} />
           <main>
             <Hero videoUrl={HERO_VIDEO_URL} fallbackImage={HERO_IMAGE_URL} />
             <TrackRecord />
-            <Values />
-            <FiloMethod />
-            <ProcessTimeline />
-            <LeadMagnet />
-            <ComparisonTable />
-            <Founder />
-            <Glossary />
-            <Stats />
-            <ProjectGrid />
-            <TechnicalPartners />
-            <Contact />
+            
+            {/* Below the Fold Components (Lazy Loaded) */}
+            <Suspense fallback={<div className="py-24 text-center text-gray-300">Caricamento contenuti...</div>}>
+              <Values />
+              <FiloMethod />
+              <ProcessTimeline />
+              <LeadMagnet />
+              <ComparisonTable />
+              <Founder />
+              <Glossary />
+              <Stats />
+              <ProjectGrid />
+              <TechnicalPartners />
+              <Contact />
+            </Suspense>
           </main>
-          <Footer logoUrl={LOGO_URL} />
-          <FloatingContact />
-          <ScrollToTop />
-          <CookieBanner />
           
-          {/* Auth & Private Area Components */}
-          <LoginModal 
-            isOpen={isLoginOpen} 
-            onClose={() => setIsLoginOpen(false)} 
-            onLogin={() => setIsLoggedIn(true)} 
-          />
-          <Dashboard 
-            isOpen={isLoggedIn} 
-            onClose={() => setIsLoggedIn(false)} 
-            user="Investitore Partner"
-          />
+          <Suspense fallback={null}>
+            <Footer logoUrl={LOGO_URL} />
+            <FloatingContact />
+            <ScrollToTop />
+            <CookieBanner />
+            
+            {/* Auth & Private Area Components */}
+            <LoginModal 
+              isOpen={isLoginOpen} 
+              onClose={() => setIsLoginOpen(false)} 
+              onLogin={() => setIsLoggedIn(true)} 
+            />
+            <Dashboard 
+              isOpen={isLoggedIn} 
+              onClose={() => setIsLoggedIn(false)} 
+              user="Investitore Partner"
+            />
+          </Suspense>
         </div>
     </div>
   );
