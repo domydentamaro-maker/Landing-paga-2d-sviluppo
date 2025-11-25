@@ -17,6 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ videoUrl, fallbackImage }) => {
           loop
           muted
           playsInline
+          preload="metadata" // Optimized for LCP
           className="w-full h-full object-cover"
           poster={fallbackImage}
         >

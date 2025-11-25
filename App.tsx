@@ -1,3 +1,4 @@
+
 import React, { useState, Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -25,14 +26,9 @@ const CookieBanner = lazy(() => import('./components/CookieBanner').then(module 
 const LoginModal = lazy(() => import('./components/LoginModal').then(module => ({ default: module.LoginModal })));
 const Dashboard = lazy(() => import('./components/Dashboard').then(module => ({ default: module.Dashboard })));
 
-const App: React.FC = () => {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // LOGO: Solid Metallic Style (Gold/Blue)
-  const svgString = `
+// --- Static Definitions (Moved outside component for performance) ---
+const svgString = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220">
-  <!-- Buildings: Elegant thin white lines -->
   <g stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="M80 130 L80 60 L100 50 L100 130" />
     <path d="M80 75 L100 65" />
@@ -42,25 +38,23 @@ const App: React.FC = () => {
     <path d="M140 60 L180 75" />
     <path d="M50 140 Q 150 120 250 140" stroke-width="1.5" opacity="0.8" />
   </g>
-
-  <!-- 2D Text: Solid Metallic Colors with White Outline for visibility -->
   <g font-family="Arial, sans-serif" font-weight="800" font-size="80">
     <text x="110" y="205" text-anchor="end" fill="#D4AF37" stroke="white" stroke-width="1">2</text>
     <text x="115" y="205" text-anchor="start" fill="#005C97" stroke="white" stroke-width="1">D</text>
   </g>
-
-  <!-- Subtitle -->
   <g font-family="Arial, sans-serif" font-weight="600" text-anchor="middle">
     <text x="150" y="235" font-size="14" fill="white" letter-spacing="4" font-weight="bold">SVILUPPO IMMOBILIARE</text>
   </g>
 </svg>
-  `.trim();
+`.trim();
 
-  const LOGO_URL = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
+const LOGO_URL = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
+const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3121459/3121459-hd_1920_1080_25fps.mp4"; 
+const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
 
-  // VIDEO: City Timelapse (Pexels Direct Link)
-  const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3121459/3121459-hd_1920_1080_25fps.mp4"; 
-  const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+const App: React.FC = () => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 antialiased overflow-x-hidden">

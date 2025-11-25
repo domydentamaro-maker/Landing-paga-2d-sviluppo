@@ -9,11 +9,19 @@ export const LeadMagnet: React.FC = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleDownload = () => {
-    generatePDF(email || "Ospite");
-    setSubmitted(true);
-    setShowModal(false);
+  const handleDownload = async () => {
+    setIsGenerating(true);
+    try {
+      await generatePDF(email || "Ospite");
+      setSubmitted(true);
+      setShowModal(false);
+    } catch (error) {
+      console.error("PDF generation failed", error);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -75,9 +83,10 @@ export const LeadMagnet: React.FC = () => {
                       />
                       <button 
                         type="submit"
-                        className="px-8 py-4 bg-[#003366] text-white font-bold rounded-xl hover:bg-cyan-700 transition-all shadow-lg flex items-center justify-center gap-2"
+                        disabled={isGenerating}
+                        className="px-8 py-4 bg-[#003366] text-white font-bold rounded-xl hover:bg-cyan-700 transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                       >
-                        SCARICA ORA
+                        {isGenerating ? 'GENERAZIONE...' : 'SCARICA ORA'}
                         <Download className="w-5 h-5" />
                       </button>
                     </form>

@@ -1,7 +1,8 @@
 
-import { jsPDF } from "jspdf";
+export const generatePDF = async (userEmail: string) => {
+  // Dynamic import: Loads the heavy library ONLY when the user clicks download
+  const { jsPDF } = await import("jspdf");
 
-export const generatePDF = (userEmail: string) => {
   const doc = new jsPDF();
   const width = doc.internal.pageSize.getWidth();
   const height = doc.internal.pageSize.getHeight();
