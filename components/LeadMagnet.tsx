@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Download, CheckCircle, FileText, Eye } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
@@ -37,7 +38,7 @@ export const LeadMagnet: React.FC = () => {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-serif text-[#003366] mb-4">
-                  Possiedi un terreno a Bari? <br />
+                  Possiedi un terreno? <br />
                   <span className="text-cyan-600">Scopri il suo vero potenziale.</span>
                 </h2>
                 
@@ -49,7 +50,7 @@ export const LeadMagnet: React.FC = () => {
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span>Analisi dei quartieri emergenti di Bari</span>
+                    <span>Analisi della zona</span>
                   </li>
                   <li className="flex items-center gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />

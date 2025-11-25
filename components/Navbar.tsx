@@ -22,7 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
   const navLinks = [
     { label: 'Chi Siamo', href: '#mission' },
     { label: 'Metodo F.I.L.O', href: '#filo' },
-    { label: 'Progetti', href: '#progetti' },
+    { label: 'Permuta', href: '#permuta' },
+    { label: 'Glossario', href: '#glossario' },
+    { label: 'Area Tecnica', href: '#partners' },
     { label: 'Contatti', href: '#contact' }
   ];
 
@@ -47,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
         <div className="w-24"></div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a 
               key={link.label}
@@ -79,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-slate-800"
+          className="lg:hidden text-slate-800"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -92,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-4 md:hidden animate-fade-in border-t border-gray-100">
+        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-4 lg:hidden animate-fade-in border-t border-gray-100">
           {navLinks.map((link) => (
             <a 
               key={link.label}
