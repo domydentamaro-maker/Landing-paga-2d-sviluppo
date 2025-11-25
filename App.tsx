@@ -1,4 +1,3 @@
-
 import React, { useState, Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -50,7 +49,7 @@ const svgString = `
 
 const LOGO_URL = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
 const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3121459/3121459-hd_1920_1080_25fps.mp4"; 
-// Optimized WebP image for Hero Fallback (Matches index.html preload)
+// Optimized WebP image for Hero Fallback (Matches index.html preload EXACTLY)
 const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=75&fm=webp";
 
 const App: React.FC = () => {
