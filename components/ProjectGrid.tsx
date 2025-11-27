@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, TrendingUp, Landmark, Network, ArrowRight, Briefcase } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const ProjectGrid: React.FC = () => {
@@ -51,7 +51,7 @@ export const ProjectGrid: React.FC = () => {
         </RevealOnScroll>
 
         {/* Standard Uniform Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-24">
           {items.map((item, index) => (
             <RevealOnScroll key={item.id} delay={index * 150}>
               <div className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
@@ -92,6 +92,94 @@ export const ProjectGrid: React.FC = () => {
             </RevealOnScroll>
           ))}
         </div>
+
+        {/* ZES & TERZIARIO FEATURE SECTION - REDESIGNED & FIXED LAYOUT */}
+        {/* Anchor ID placed on wrapper with substantial scroll margin */}
+        <div id="zes" className="scroll-mt-32 pt-10"> 
+          <RevealOnScroll delay={200}>
+            <div className="relative rounded-3xl overflow-hidden bg-[#003366] text-white shadow-2xl flex flex-col lg:flex-row">
+              
+              {/* Left Column: Image */}
+              <div className="lg:w-2/5 relative min-h-[300px] lg:min-h-full">
+                <img 
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&w=800&auto=format&fit=crop&fm=webp" 
+                  alt="Sviluppo Industriale e ZES"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[#003366]/60 mix-blend-multiply"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-amber-500/90 text-[#003366] text-xs font-bold uppercase px-3 py-1 inline-block rounded-sm mb-2">
+                    Focus Industriale
+                  </div>
+                  <p className="text-white text-sm font-light italic opacity-90">
+                    "Creiamo hub per la crescita produttiva del Mezzogiorno."
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column: Content */}
+              <div className="lg:w-3/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative">
+                {/* Background Glow */}
+                <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+                <span className="text-amber-400 font-bold tracking-widest uppercase text-xs mb-4 flex items-center gap-2">
+                  <Landmark className="w-4 h-4" />
+                  Divisione Corporate
+                </span>
+                
+                <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6 leading-tight">
+                  ZES Unica & Sviluppo Terziario
+                </h3>
+                
+                <p className="text-blue-100 text-lg leading-relaxed mb-8">
+                  La nostra divisione specialistica affianca le imprese nella localizzazione di nuovi insediamenti produttivi. 
+                  Trasformiamo le opportunità della <strong>ZES Unica (Zona Economica Speciale)</strong> in vantaggio competitivo, 
+                  identificando le aree più idonee per logistica, industria leggera e direzionale.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded text-amber-400 mt-1"><TrendingUp className="w-5 h-5" /></div>
+                    <div>
+                      <h4 className="font-bold text-white">Credito d'Imposta</h4>
+                      <p className="text-xs text-slate-300">Massimizzazione degli incentivi fiscali sugli investimenti.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded text-amber-400 mt-1"><Network className="w-5 h-5" /></div>
+                    <div>
+                      <h4 className="font-bold text-white">Logistica Integrata</h4>
+                      <p className="text-xs text-slate-300">Aree connesse alle grandi direttrici di traffico.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {/* Primary Button */}
+                  <a 
+                    href="#contact" 
+                    className="inline-flex items-center justify-center gap-3 bg-white text-[#003366] px-8 py-4 rounded-xl font-bold hover:bg-cyan-50 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                  >
+                    RICHIEDI STUDIO ZES
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+
+                  {/* Secondary Button - Added as requested */}
+                  <a 
+                    href="#contact" 
+                    className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-white border-2 border-white/20 hover:bg-white/10 hover:border-white transition-all"
+                  >
+                    SCOPRI LE OPPORTUNITÀ
+                    <Briefcase className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </RevealOnScroll>
+        </div>
+
       </div>
     </section>
   );

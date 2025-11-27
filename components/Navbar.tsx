@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         
-        {/* Logo rimosso come richiesto */}
+        {/* Placeholder for Logo (Removed as requested) */}
         <div className="w-24"></div>
 
         {/* Desktop Navigation */}
