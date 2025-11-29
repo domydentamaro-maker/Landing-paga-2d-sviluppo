@@ -4,6 +4,7 @@ import { BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const Glossary: React.FC = () => {
+  // Initialize to null so no item is open by default
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const terms = [
