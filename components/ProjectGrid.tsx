@@ -7,7 +7,7 @@ export const ProjectGrid: React.FC = () => {
   const items = [
     {
       id: '1',
-      title: 'Materia Prima',
+      title: 'Spazio Zero',
       subtitle: 'Analisi & Suoli',
       description: 'La selezione del suolo è il primo passo dell\'investimento. Analizziamo le potenzialità edificatorie e il contesto urbanistico per garantire il massimo valore.',
       // Optimized WebP
@@ -17,7 +17,7 @@ export const ProjectGrid: React.FC = () => {
     },
     {
       id: '2',
-      title: 'Visioni',
+      title: 'Visioni Immobiliari',
       subtitle: 'Sviluppo & Concept',
       description: 'Trasformiamo numeri e planimetrie in progetti vivi. Dallo studio di fattibilità al concept architettonico, diamo forma al futuro dell\'area.',
       // Optimized WebP
@@ -27,7 +27,7 @@ export const ProjectGrid: React.FC = () => {
     },
     {
       id: '3',
-      title: 'Blog & News',
+      title: 'Materia Prima',
       subtitle: 'Mercato & Trend',
       description: 'Analisi del mercato immobiliare barese, normative urbanistiche e opportunità di investimento. Il punto di vista esperto sul settore.',
       // Optimized WebP
@@ -75,7 +75,8 @@ export const ProjectGrid: React.FC = () => {
                     <span className="text-cyan-400 font-bold tracking-widest uppercase text-xs mb-2 block">
                       {item.subtitle}
                     </span>
-                    <h3 className="text-3xl font-serif font-bold text-white mb-4">
+                    {/* MODIFICATO: Font ridotto a text-2xl e tracking-tight per stare su una riga */}
+                    <h3 className="text-2xl font-serif font-bold text-white mb-4 tracking-tight min-h-[2rem] flex items-end">
                       {item.title}
                     </h3>
                     <p className="text-gray-200 text-base leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
