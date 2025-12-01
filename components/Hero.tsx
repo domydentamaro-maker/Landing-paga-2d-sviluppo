@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ videoUrl, fallbackImage }) => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden font-sans flex flex-col justify-center items-center">
+    <section className="relative h-screen w-full overflow-hidden font-sans flex flex-col justify-center items-center pt-28 md:pt-32">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
