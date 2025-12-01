@@ -40,13 +40,19 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-6'
+        isScrolled ? 'bg-[#003366]/95 backdrop-blur-xl shadow-lg py-2' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         
-        {/* Placeholder for Logo (Removed as requested) */}
-        <div className="w-24"></div>
+        {/* Logo */}
+        <a href="#" className="flex-shrink-0">
+          <img 
+            src="https://storage.googleapis.com/tempo-image-previews/user_33jc6kDInS2v6uK8MIf4PZDaR7c-1764612387906-1000321309-removebg-preview.png" 
+            alt="2D Sviluppo Immobiliare" 
+            className="h-20 md:h-24 w-auto object-contain"
+          />
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6">
@@ -56,12 +62,12 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
               href={link.href}
               onClick={(e) => handleScrollTo(e, link.href)}
               className={`font-medium text-sm tracking-wide transition-colors relative group ${
-                isScrolled ? 'text-slate-700 hover:text-[#003366]' : 'text-white/90 hover:text-white'
+                isScrolled ? 'text-white/90 hover:text-white' : 'text-white/90 hover:text-white'
               }`}
             >
               {link.label}
               <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                isScrolled ? 'bg-[#003366]' : 'bg-white'
+                isScrolled ? 'bg-white' : 'bg-white'
               }`}></span>
             </a>
           ))}
@@ -70,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
             onClick={onOpenLogin}
             className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
               isScrolled 
-                ? 'border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white' 
+                ? 'border-white/30 text-white hover:bg-white/20' 
                 : 'border-white/30 text-white hover:bg-white/20'
             }`}
           >
@@ -85,9 +91,9 @@ export const Navbar: React.FC<NavbarProps> = ({ logoUrl, onOpenLogin }) => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className={`w-8 h-8 ${isScrolled ? 'text-slate-800' : 'text-white'}`} />
+            <X className="w-8 h-8 text-white" />
           ) : (
-            <Menu className={`w-8 h-8 ${isScrolled ? 'text-slate-800' : 'text-white'}`} />
+            <Menu className="w-8 h-8 text-white" />
           )}
         </button>
       </div>

@@ -17,9 +17,9 @@ export const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
               {/* Logo is now transparent. Added drop-shadow to make the dark text pop against dark background without changing original colors */}
               <div className="inline-block">
                 <img 
-                  src={logoUrl} 
+                  src="https://storage.googleapis.com/tempo-image-previews/user_33jc6kDInS2v6uK8MIf4PZDaR7c-1764612387906-1000321309-removebg-preview.png" 
                   alt="2D Logo" 
-                  className="w-24 h-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" 
+                  className="h-24 md:h-32 w-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]" 
                 />
               </div>
             </div>
