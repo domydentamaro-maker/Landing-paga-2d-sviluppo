@@ -64,7 +64,6 @@ const App: React.FC = () => {
           
           <main>
             <Hero videoUrl={HERO_VIDEO_URL} fallbackImage={HERO_IMAGE_URL} />
-            <TrackRecord />
             
             <Suspense fallback={<div className="py-24"></div>}>
               <Values />

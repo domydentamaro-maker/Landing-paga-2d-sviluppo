@@ -18,7 +18,7 @@ export const Founder: React.FC = () => {
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 {/* Optimized WebP Image */}
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=75&fm=webp" 
+                  src="https://materiaprima.2dsviluppoimmobiliare.it/wp-content/uploads/2026/01/Domenico-Dentamaro-2D-Sviluppo-Immobiliare.jpg" 
                   alt="Domenico Dentamaro" 
                   loading="lazy"
                   width="600"
